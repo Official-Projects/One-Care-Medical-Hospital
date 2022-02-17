@@ -1,0 +1,95 @@
+<h2 class="text-center"> Hello, You can Book Appointments here.</h2>
+<mat-card>
+    <form [formGroup]="appointForm" (ngSubmit)="book()" class="form-row">
+
+
+        <p class="h4 mb-4" style="margin-left: 105px;">Doctor Appointment Form</p>
+        <img src="../../assets/Doctor.jpg" alt=""
+            style="width: 45%; position: absolute; height:  80%; right: 50px ; border-radius: 25px;" class="col-md-6">
+        <!-- <img src="../../assets/undraw_welcome_cats_thqn.svg" alt=""
+            style="width: 30%; position: absolute; height:  60%; right: 0;" class="col-md-6"> -->
+        <div class="col-md-5 ">
+            <!-- Name -->
+            <div class="form-group col-md-6 offset-4">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter your name</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="name" required>
+
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+                    <small class="text-danger" *ngIf="name?.invalid && name?.touched">Name is Required
+                    </small>
+
+                </mat-form-field>
+
+            </div>
+            <div class="form-group col-md-6 offset-4">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+                    <small class="text-danger" *ngIf="email?.invalid && email?.touched">Enter valid Email id
+                    </small>
+                </mat-form-field>
+            </div>
+            <div class="form-group offset-4">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter your contact number</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="contact" required>
+
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+                    <small class="text-danger" *ngIf="contact?.invalid && contact?.touched">Enter valid Contact Number
+                    </small>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-6 offset-4">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter your age</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="age" required>
+
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+                    <small class="text-danger" *ngIf="age?.invalid && age?.touched">Age should be below 100 and above 0.
+                    </small>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-6 offset-4">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter your Address
+                    </mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="address" required>
+
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+                    <small class="text-danger" *ngIf="address?.invalid && address?.touched">Enter the district along
+                        with
+                        state.
+                    </small>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-6 offset-4">
+                <section class="example-section" [formGroup]="AppointmentType">
+                    <h3>Appointment Type</h3>
+                    <h6>Select which appointment type(s) you require</h6>
+                    <p>
+                        <mat-checkbox formControlName="Cervixcheckup">Cervix checkup</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox formControlName="Heartcheckup">Heart checkup</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox formControlName="Eyecheckup">Eye checkup</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox formControlName="HearingTest">Hearing Test</mat-checkbox>
+                    </p>
+                </section>
+                <input type="submit" name="" id="" value="BOOK" class="btn myButton" mat-raised-button
+                    routerLink="/viewAppointment" [disabled]="appointForm.invalid">
+            </div>
+        </div>
+    </form>
+</mat-card>
