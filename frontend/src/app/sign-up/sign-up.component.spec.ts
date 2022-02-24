@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SignUpComponent } from './sign-up.component';
+import { SignUpComponent } from "./sign-up.component";
 
-describe('SignUpComponent', () => {
+describe("SignUpComponent", () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignUpComponent ]
-    })
-    .compileComponents();
+      declarations: [SignUpComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,8 @@ describe('SignUpComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
+  it("Name should be more than 3 chars", () => {});
 });

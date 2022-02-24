@@ -1,35 +1,32 @@
-import { AuthService } from './../auth.service';
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from "./../auth.service";
+import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
-} from '@angular/forms';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+} from "@angular/forms";
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { SocialAuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
   logForm!: FormGroup;
   hide = true;
   showMsg: boolean = false;
-  // email: any;
-  // password: any;
-  message = new FormControl('Login here..!');
-  // email = this.logForm.get('email')?.value;
-  // password = this.logForm.get('password')?.value;
-  // Passwordregex: any =
-  //   /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/;
-
+  message = new FormControl("Login here..!");
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private socialAuthService: SocialAuthService
   ) {}
   ngOnInit(): void {
     this.logForm = new FormGroup({
@@ -41,31 +38,31 @@ export class LoginComponent implements OnInit {
       ]),
     });
   }
+  signInWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
   login() {
-    console.log('Login() function');
+    console.log("Login() function");
 
     console.log(this.logForm.value);
     this.authService.login(this.logForm.value).subscribe((res) => {
-      localStorage.setItem('userInfo', JSON.stringify(res));
+      localStorage.setItem("userInfo", JSON.stringify(res));
       // window.location.reload();
       console.log(res);
       if (res.status) {
-        console.log('jjdjf');
+        console.log("jjdjf");
         this.authService.subject.next(true);
-        this.router.navigate(['home']);
+        alert(`${res.message}`);
+        this.router.navigate(["home"]);
       }
     });
-
-    // this.logForm.reset();
   }
-  // openSnackBar(message: string, action: string) {
-  //   this._snackBar.open(message, action);
-  // }
   get email() {
-    return this.logForm.get('email');
+    return this.logForm.get("email");
   }
   get password() {
-    return this.logForm.get('password');
+    return this.logForm.get("password");
   }
   getErrorMessage() {
     // this.email = this.logForm.get('email')?.value;

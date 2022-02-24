@@ -5,11 +5,14 @@
   font-size: 20px;
   padding: 0 5px;
 }
+mat-toolbar {
+  width: 100vw !important;
+}
 .sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10000;
 }
 .oneCareLogo {
   margin-top: 20px;

@@ -1,13 +1,6 @@
 <mat-toolbar style="background-color: #ffa726; color: white;" class="sticky">
     <mat-toolbar-row fxLayoutAlign="space-between center">
         <div fxLayout="row">
-            <!-- <button mat-icon-button>
-                <mat-icon> subject</mat-icon>
-            </button> -->
-            <!-- <button mat-icon-button>
-                <mat-icon routerLink="home">flare</mat-icon>
-            </button>
-            <span>|</span> -->
             <button mat-button> <span class="logo" routerLink="home">One Care</span></button>
             <div *ngIf="!deviceXs" fxLayoutAlign="space-between center">
                 <button mat-button routerLink="/home">Home</button>
@@ -18,17 +11,12 @@
 
         </div>
         <div>
-            <!-- <div *ngIf="!deviceXs"> -->
-            <button *ngIf="!headersLoader" mat-button routerLink="/login">Login</button>
+            <button *ngIf="!headersLoader" mat-button (click)="loggedIn()">Login</button>
             <button *ngIf="!headersLoader" mat-button routerLink="/signup">Sign Up</button>
             <button *ngIf="headersLoader" mat-button routerLink="/login" (click)="logout()">Logout</button>
             <button *ngIf="!deviceXs" mat-icon-button>
                 <!-- <mat-icon routerLink="/profile">person</mat-icon> -->
             </button>
-            <!-- </div> -->
-            <!-- <button mat-icon-button>
-                <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
-            </button> -->
         </div>
 
     </mat-toolbar-row>

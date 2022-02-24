@@ -19,14 +19,12 @@ module.exports.loginUser = async (req, res, next) => {
       const verifyPassword = await user.passwordVerification(password);
       if (verifyPassword) {
         const token = await user.generateToken();
-        res
-          .status(200)
-          .json({
-            message: "Login Successfull.",
-            data: user,
-            token: token,
-            status: true,
-          });
+        res.status(200).json({
+          message: `Hi ${user.name} you have successfully logged in.`,
+          data: user,
+          token: token,
+          status: true,
+        });
       } else {
         res.status(403).json({ message: "Email/Password Invalid." });
       }
