@@ -1,164 +1,72 @@
-<!-- <h2 class="text-center"> Hello, You can Book Appointments here.</h2>
-<mat-card>
-    <form [formGroup]="appointForm" (ngSubmit)="book()" class="form-row">
+<div class="dialog-box">
+    <h1 mat-dialog-title>Doctor Appointment Form</h1>
+    <form [formGroup]="appointForm">
+        <div mat-dialog-content>
 
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <!-- <mat-hint>Enter Name</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <!-- <mat-hint>Enter Email</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your Contact</mat-label>
+                <input matInput placeholder="Contact" formControlName="contact" required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <!-- <mat-hint>Enter Contact </mat-hint> -->
+            </mat-form-field>
+            <label for="">
+                <h2>Gender : </h2>
+            </label>
+            <mat-radio-group formControlName="gender" class="example-radio-group">
+                <mat-radio-button value="{{gender}}" *ngFor="let gender of gender" class="example-radio-button">
+                    {{gender}}
+                </mat-radio-button>
 
-        <p class="h4 mb-4" style="margin-left: 105px;">Doctor Appointment Form</p>
-        <img src="../../assets/Doctor.jpg" alt=""
-            style="width: 45%; position: absolute; height:  80%; right: 50px ; border-radius: 25px;" class="col-md-6">
-       <img src="../../assets/undraw_welcome_cats_thqn.svg" alt=""
-            style="width: 30%; position: absolute; height:  60%; right: 0;" class="col-md-6"> 
-        <div class="col-md-5 ">
-            Name
-            <div class="form-group col-md-6 offset-4">
-                <mat-form-field appearance="legacy">
-                    <mat-label>Enter your name</mat-label>
-                    <input matInput placeholder="pat@example.com" formControlName="name" required>
+            </mat-radio-group>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your Age</mat-label>
+                <input matInput placeholder="age" formControlName="age" required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <!-- <mat-hint>Enter Age</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your Address</mat-label>
+                <input matInput placeholder="address" formControlName="address" required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <!-- <mat-hint>Enter Address</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Appointment Type(s)</mat-label>
+                <mat-select placeholder="category" formControlName="appointmentType">
+                    <mat-option value="General Physician">General Physician</mat-option>
+                    <mat-option value="Heart Checkup">Heart Checkup</mat-option>
+                    <mat-option value="Eye Checkup">Eye Checkup</mat-option>
+                    <mat-option value="Hearing Test">Hearing Test</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description of Symptoms</mat-label>
+                <textarea matInput formControlName="description"> </textarea>
+            </mat-form-field>
 
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-
-                    <small class="text-danger" *ngIf="name?.invalid && name?.touched">Name is Required
-                    </small>
-
-                </mat-form-field>
-
-            </div>
-            <div class="form-group col-md-6 offset-4">
-                <mat-form-field appearance="legacy">
-                    <mat-label>Enter your email</mat-label>
-                    <input matInput placeholder="pat@example.com" formControlName="email" required>
-
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-
-                    <small class="text-danger" *ngIf="email?.invalid && email?.touched">Enter valid Email id
-                    </small>
-                </mat-form-field>
-            </div>
-            <div class="form-group offset-4">
-                <mat-form-field appearance="legacy">
-                    <mat-label>Enter your contact number</mat-label>
-                    <input matInput placeholder="pat@example.com" formControlName="contact" required>
-
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-
-                    <small class="text-danger" *ngIf="contact?.invalid && contact?.touched">Enter valid Contact Number
-                    </small>
-                </mat-form-field>
-            </div>
-            <div class="form-group col-md-6 offset-4">
-                <mat-form-field appearance="legacy">
-                    <mat-label>Enter your age</mat-label>
-                    <input matInput placeholder="pat@example.com" formControlName="age" required>
-
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-
-                    <small class="text-danger" *ngIf="age?.invalid && age?.touched">Age should be below 100 and above 0.
-                    </small>
-                </mat-form-field>
-            </div>
-            <div class="form-group col-md-6 offset-4">
-                <mat-form-field appearance="legacy">
-                    <mat-label>Enter your Address
-                    </mat-label>
-                    <input matInput placeholder="pat@example.com" formControlName="address" required>
-
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-
-                    <small class="text-danger" *ngIf="address?.invalid && address?.touched">Enter the district along
-                        with
-                        state.
-                    </small>
-                </mat-form-field>
-            </div>
-            <div class="form-group col-md-6 offset-4">
-                <section class="example-section" [formGroup]="AppointmentType">
-                    <h3>Appointment Type</h3>
-                    <h6>Select which appointment type(s) you require</h6>
-                    <p>
-                        <mat-checkbox formControlName="Cervixcheckup">Cervix checkup</mat-checkbox>
-                    </p>
-                    <p>
-                        <mat-checkbox formControlName="Heartcheckup">Heart checkup</mat-checkbox>
-                    </p>
-                    <p>
-                        <mat-checkbox formControlName="Eyecheckup">Eye checkup</mat-checkbox>
-                    </p>
-                    <p>
-                        <mat-checkbox formControlName="HearingTest">Hearing Test</mat-checkbox>
-                    </p>
-                </section>
-                <input type="submit" name="" id="" value="BOOK" class="btn myButton" mat-raised-button
-                    routerLink="/viewAppointment" [disabled]="appointForm.invalid">
-            </div>
+        </div>
+        <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+            <button style="margin-left: 8px;" mat-raised-button color="primary" [disabled]="appointForm.invalid"
+                (click)="addBooking()">{{actionBtn}}</button>
         </div>
     </form>
-</mat-card> -->
-<h1 mat-dialog-title>Doctor Appointment Form</h1>
-<form [formGroup]="appointForm">
-    <div mat-dialog-content>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Enter your name</mat-label>
-            <input matInput placeholder="Name" formControlName="name" required>
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <!-- <mat-hint>Enter Name</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Enter your email</mat-label>
-            <input matInput placeholder="Email" formControlName="email" required>
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <!-- <mat-hint>Enter Email</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Enter your Contact</mat-label>
-            <input matInput placeholder="Contact" formControlName="contact" required>
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <!-- <mat-hint>Enter Contact </mat-hint> -->
-        </mat-form-field>
-        <label for="">
-            <h2>Gender : </h2>
-        </label>
-        <mat-radio-group formControlName="gender" class="example-radio-group">
-            <mat-radio-button value="{{gender}}" *ngFor="let gender of gender" class="example-radio-button">{{gender}}
-            </mat-radio-button>
-
-        </mat-radio-group>
-        <mat-form-field appearance="outline">
-            <mat-label>Enter your Age</mat-label>
-            <input matInput placeholder="age" formControlName="age" required>
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <!-- <mat-hint>Enter Age</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Enter your Address</mat-label>
-            <input matInput placeholder="address" formControlName="address" required>
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <!-- <mat-hint>Enter Address</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Appointment Type(s)</mat-label>
-            <mat-select placeholder="category" formControlName="appointmentType">
-                <mat-option value="General Physician">General Physician</mat-option>
-                <mat-option value="Heart Checkup">Heart Checkup</mat-option>
-                <mat-option value="Eye Checkup">Eye Checkup</mat-option>
-                <mat-option value="Hearing Test">Hearing Test</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Description of Symptoms</mat-label>
-            <textarea matInput formControlName="description"> </textarea>
-        </mat-form-field>
-
-    </div>
-    <div mat-dialog-actions [align]="'end'">
-        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-        <button style="margin-left: 8px;" mat-raised-button color="primary" [disabled]="appointForm.invalid"
-            (click)="addBooking()">{{actionBtn}}</button>
-    </div>
-</form>
+</div>

@@ -1,58 +1,3 @@
-<!-- 
-<mat-card class="example-card">
-    <mat-card-title-group>
-        <mat-card-title>One Care Medical Center</mat-card-title>
-        <mat-card-subtitle>Hospital Services</mat-card-subtitle>
-    </mat-card-title-group>
-    <img mat-card-image src="https://ocmc.in/wp-content/uploads/2017/06/bg.jpg">
-    <mat-card-content>
-        One Care Medical Center (OCMC) was started with one singular vision and that is ‘One quality of healthcare for
-        all’
-        especially in the field of orthopedic. OCMC was started based on this very belief in 2016 by Dr Salam who is a
-        well
-        recognized and respected Ortho specialist in the Coimbatore area.
-    </mat-card-content>
-</mat-card>
-<mat-card class="example-card">
-    <mat-card-title-group>
-        <mat-card-title>OCMC</mat-card-title>
-        <mat-card-subtitle>One Care Medical Care</mat-card-subtitle>
-        <img mat-card-xl-image src="https://ocmc.in/wp-content/uploads/2013/05/abdul-salam.jpg">
-        <h2>Get Your health a proper path.</h2>
-    </mat-card-title-group>
-    <mat-card-content>
-        OCMC is international ortho hospital in Coimbatore and our ortho doctors here are always at the top of their
-        game. We
-        are passionate about providing personalized attention and orthopaedic treatments for all the patients who visit
-        us
-        in good faith
-
-        Moreover, safety of our patients is paramount and our vision is to be rated as among the best ortho hospitals
-        for
-        minimal post operative complications.
-    </mat-card-content>
-</mat-card>
-<mat-card class="example-card">
-    <mat-card-title-group>
-        <mat-card-title>WHY US?</mat-card-title>
-    </mat-card-title-group>
-    <mat-card-content>
-        We do what we do, because we want you to move and get back up to peak performance and our day to day clinical
-        practise is inextricably linked with the latest in orthopedic research/innovation.
-
-        We also constantly revise and refine our ortho treatments to ensure patient’s get the best possible care at a
-        fraction of the cost bigger healthcare setups would charge
-
-        OCMC is located in the one of coimbatore cities most pristine and sought after locations i.e in the heart of Sai
-        Baba colony. The hospital is also easily accessible both from the railway station, bus stop and other important
-        landmark locations of coimbatore city .
-
-        OCMC was founded by Dr Salam, a well recognized and highly sought after orthopedic doctor in Coimbatore area
-        with a singular aim to completely redefine the quality of care in clinical orthopedics. OCMC’s main motto is
-        ‘One Quality of Care for all’
-    </mat-card-content>
-</mat-card> -->
-
 <div id="about-main">
     <div class="jumbotron">
         <div class="jumbotron-inner">
@@ -161,8 +106,10 @@
                 Find Us in Maps
             </h3>
             <div class="img-container">
-                <!-- <img src="https://maps.googleapis.com/maps/api/js?v=3.exp" alt="" class="img-responsive"> -->
-                <div id="mapping" style="width:100%;height:400px"></div>
+
+                <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
             </div>
         </div>
     </div>

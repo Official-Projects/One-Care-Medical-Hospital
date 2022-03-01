@@ -26,6 +26,16 @@ import { ViewAppointmentComponent } from "./view-appointment/view-appointment.co
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { SocialLoginModule, GoogleLoginProvider } from "angularx-social-login";
 import { SocialAuthServiceConfig } from "angularx-social-login";
+// import { DropdownModule } from "primeng/primeng";
+import { AgmCoreModule } from "@agm/core";
+import { GMapModule } from "primeng/gmap";
+import { AccordionModule } from "primeng/accordion"; //accordion and accordion tab
+import { MenuItem } from "primeng/api";
+import { MessageService } from "primeng/api";
+import { CheckboxModule } from "primeng/checkbox";
+import { ToastModule } from "primeng/toast";
+import { DialogModule } from "primeng/dialog";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +65,14 @@ import { SocialAuthServiceConfig } from "angularx-social-login";
     HttpClientModule,
     MaterialModule,
     SocialLoginModule,
+    GMapModule,
+    AccordionModule,
+    DialogModule,
+    ToastModule,
+    CheckboxModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAgYBzxHNgB5yv72HGwZHBWrzNNTB1kMGA",
+    }),
   ],
   providers: [
     {
@@ -64,7 +82,9 @@ import { SocialAuthServiceConfig } from "angularx-social-login";
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider("clientId"),
+            provider: new GoogleLoginProvider(
+              "581991388547-auealk9fotl4b2caaibb5cru5nttkf05.apps.googleusercontent.com"
+            ),
           },
         ],
       } as SocialAuthServiceConfig,

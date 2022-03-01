@@ -128,6 +128,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MatTableModule,
     ReactiveFormsModule, //Add if needed
     FormsModule,
+    MatFormFieldModule,
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },

@@ -73,7 +73,7 @@ export class ViewAppointmentComponent implements OnInit {
     console.log(row);
     // this.getAllAppointment(),
     this.dialog.open(AppointmentComponent, {
-      width: "50%",
+      width: "60%",
       data: row,
     });
     // this.getAllAppointment();
